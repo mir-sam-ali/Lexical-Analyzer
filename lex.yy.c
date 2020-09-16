@@ -1100,12 +1100,12 @@ case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
 #line 68 "trial.l"
-{printf("\n COMMENT"); return 10;}
+{ return 10;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 69 "trial.l"
-{printf("\n COMMENT"); return 10;}
+{ return 10;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP

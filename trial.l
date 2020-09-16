@@ -65,8 +65,8 @@ FloatingPointLiteral            {DecimalFloatingPointLiteral}|{HexadecimalFloati
 %%
 "{"|"}"|"("|")"|";"|","            {printf("\n Separator: %s",yytext); return 10;}
 "."                                {printf("\n Dot operator"); return 10;}
-"/*"(.|\n)*"*/"                		{printf("\n COMMENT"); return 10;}
-"//"(.)*                       		{printf("\n COMMENT"); return 10;}
+"/*"(.|\n)*"*/"                		{ return 10;}
+"//"(.)*                       		{ return 10;}
 "abstract"|"continue"|"for"|"new"|"while"			{printf("\n Keyword: %s",yytext); return 10;}
 "switch"|"assert"|"default"|"goto"|"package"		{printf("\n Keyword: %s",yytext); return 10;}
 "synchronized"|"boolean"|"do"|"if"|"private"		{printf("\n Keyword: %s",yytext); return 10;}

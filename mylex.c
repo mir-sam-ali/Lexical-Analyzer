@@ -117,7 +117,7 @@ struct Node *head[MAX];
 
 int hashf(char *lexeme)
 {
-    printf("HASHING...%s\n", lexeme);
+
     int sum = 0;
     int i = 0;
 
@@ -131,10 +131,26 @@ int hashf(char *lexeme)
     return (sum % 100);
 }
 
+void printSymbolTable()
+{
+    printf("\n\n SYMBOL TABLE\n");
+    for (int i = 0; i < MAX; i++)
+    {
+        if (head[i] != NULL)
+        {
+            struct Node *temp = head[i];
+            while (temp != NULL)
+            {
+                printf("<%s,%s>\n", temp->token_name, temp->lexeme);
+                temp = temp->next;
+            }
+        }
+    }
+}
+
 // Function to find an identifier
 int find(char *lexeme)
 {
-    printf("FINDING...\n");
     int index = hashf(lexeme);
     struct Node *start = head[index];
 
@@ -143,7 +159,7 @@ int find(char *lexeme)
 
     while (start != NULL)
     {
-        printf("%s %s\n", start->lexeme, start->token_name);
+
         if (strcmp(start->lexeme, lexeme) == 0)
         {
             return 1;
@@ -155,18 +171,35 @@ int find(char *lexeme)
     return -1; // not found
 }
 
+char *copyString(char *lexeme)
+{
+    int length = 0;
+    while (lexeme[length] != '\0')
+    {
+        length++;
+    }
+    char *copy = (char *)malloc(sizeof(char) * length);
+    int i = 0;
+    while (lexeme[i] != '\0')
+    {
+        copy[i] = lexeme[i];
+        i++;
+    }
+    return copy;
+}
+
 // Function to insert an identifier
 int insert(char *token_name, char *lexeme,
            int lineno)
 {
-    printf("INSERTING...\n");
+
     int index = hashf(lexeme);
 
     struct Node *p = (struct Node *)malloc(sizeof(struct Node));
     p->token_name = token_name;
 
-    p->lexeme = lexeme;
-    printf("HASH: %s\n", p->lexeme);
+    p->lexeme = copyString(lexeme);
+
     p->lineNo = lineno;
     p->next = NULL;
 
@@ -178,6 +211,7 @@ int insert(char *token_name, char *lexeme,
 
     else
     {
+
         struct Node *start = head[index];
         while (start->next != NULL)
             start = start->next;
@@ -202,7 +236,7 @@ void init()
 int main()
 {
     init();
-    printf("**** SYMBOL_TABLE ****\n");
+
     int ntoken, vtoken;
 
     ntoken = yylex();
@@ -254,8 +288,12 @@ int main()
         }
 
         default:
+        {
+
             break;
+        }
         }
         ntoken = yylex();
     }
+    printSymbolTable();
 }
