@@ -1,7 +1,7 @@
 # Lexical Analyzer for Java
 
-- I've followed [Oracle's Documentation](https://docs.oracle.com/javase/specs/jls/se6/html/lexical.html) of Java to write the rules.
-- My lexer categorizes each token of the Java program as one of the following:
+- I've followed [Oracle's Documentation](https://docs.oracle.com/javase/specs/jls/se6/html/lexical.html) of Java's Lexical Structure to write the rules.
+- My lexer categorizes each lexeme of the Java program as one of the following tokens:
   - Identifiers
   - Keywords
   - Integer Literals
@@ -22,11 +22,11 @@ The Hashing function is the following:
 Hash = (key)%(SIZE_OF_BUCKET);
 ```
 
-Here the key is the sum of ASCII values of the characters of the string.
+Here the key is the sum of ASCII values of the characters of the lexeme.
 
 If there is a collision, then the node is added to the linked list at the position of Hash value.
 
-Each Node in the Linked List present at each position in the array will represent a token.
+Each Node in the Linked List present at each position in the array will represent a lexeme.
 
 It will consist the following data:
 
@@ -53,6 +53,10 @@ I've decided to add the following tokens in the Symbol Table:
   > Inserts the given token and it's value to the symbol table.
 - lookUp
   > Checks if the given lexeme is already present in the table.
+- printSymbolTable
+  > Prints the contents of the Symbol table.
+- copyString
+  > Copies the passed string into new array and returns the pointer.
 
 ## Execution
 
@@ -62,7 +66,7 @@ Clone this repository
 git clone https://github.com/mir-sam-ali/Lexical-Analyzer
 ```
 
-Open the above cloned directory and run the following commands:
+Open the cloned repository and run the following commands:
 
 - make -f Makefile.f
 - ./mylexer FILE_NAME.java
