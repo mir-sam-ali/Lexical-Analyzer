@@ -42,3 +42,23 @@ I've decided to add the following tokens in the Symbol Table:
 - Null Literal
 - Identifier
   - When an identifier is matched, my implementation checks if the matched identifier is already present in the symbol table. If it exists, then it is not added to the Symbol Table.
+  
+## Functions used
+
+- HASH
+> Calculates and returns the hash value of the lexeme.
+- Insert
+> Inserts the given token and it's value to the symbol table.
+- lookUp
+> Checks if the given lexeme is already present in the table.
+
+## Execution
+Clone this repository
+```bash
+git clone https://github.com/mir-sam-ali/Lexical-Analyzer
+```
+Open the above cloned directory and run the following commands:
+- make -f mymakefile.f
+- ./mylex FILE_NAME.java
+
+
