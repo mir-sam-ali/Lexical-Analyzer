@@ -16,106 +16,9 @@ struct Node
     struct Node *next;
 };
 
-// void Node_Initialization(struct Node *next)
-// {
-//     next = NULL;
-// }
-
-void Node_initialization(char *lexeme, char *token_name, int lineNo, struct Node *node)
-{
-
-    node->token_name = token_name;
-    node->lexeme = lexeme;
-    node->lineNo = lineNo;
-    node->next = NULL;
-}
-
-void print(char *lexeme, char *token_name, int lineNo, struct Node *node)
-{
-
-    printf("Line Number:%d\t< %s , %s >\n", lineNo, token_name, lexeme);
-}
-
-/* data */
 struct Node *head[MAX];
 
-// public:
-// SymbolTable()
-// {
-//     for (int i = 0; i < MAX; i++)
-//         head[i] = NULL;
-// }
-
-// Function to modify an identifier
-// bool SymbolTable::modify(string id, string s,
-//                          string t, int l)
-// {
-//     int index = hashf(id);
-//     Node *start = head[index];
-
-//     if (start == NULL)
-//         return "-1";
-
-//     while (start != NULL)
-//     {
-//         if (start->identifier == id)
-//         {
-//             start->scope = s;
-//             start->type = t;
-//             start->lineNo = l;
-//             return true;
-//         }
-//         start = start->next;
-//     }
-
-//     return false; // id not found
-// }
-
-// Function to delete an identifier
-// bool SymbolTable::deleteRecord(string id)
-// {
-//     int index = hashf(id);
-//     Node *tmp = head[index];
-//     Node *par = head[index];
-
-//     // no identifier is present at that index
-//     if (tmp == NULL)
-//     {
-//         return false;
-//     }
-//     // only one identifier is present
-//     if (tmp->identifier == id && tmp->next == NULL)
-//     {
-//         tmp->next = NULL;
-//         delete tmp;
-//         return true;
-//     }
-
-//     while (tmp->identifier != id && tmp->next != NULL)
-//     {
-//         par = tmp;
-//         tmp = tmp->next;
-//     }
-//     if (tmp->identifier == id && tmp->next != NULL)
-//     {
-//         par->next = tmp->next;
-//         tmp->next = NULL;
-//         delete tmp;
-//         return true;
-//     }
-
-//     // delete at the end
-//     else
-//     {
-//         par->next = NULL;
-//         tmp->next = NULL;
-//         delete tmp;
-//         return true;
-//     }
-//     return false;
-// }
-
-int hashf(char *lexeme)
+int HASH(char *lexeme)
 {
 
     int sum = 0;
@@ -133,7 +36,7 @@ int hashf(char *lexeme)
 
 void printSymbolTable()
 {
-    printf("\n\n SYMBOL TABLE\n");
+    printf("\n\n\t **** SYMBOL TABLE *****\n\n");
     for (int i = 0; i < MAX; i++)
     {
         if (head[i] != NULL)
@@ -141,7 +44,10 @@ void printSymbolTable()
             struct Node *temp = head[i];
             while (temp != NULL)
             {
-                printf("<%s,%s>\n", temp->token_name, temp->lexeme);
+                printf("Token Name:\t%s\n", temp->token_name);
+                printf("Lexeme:\t\t%s\n", temp->lexeme);
+                printf("Line No.:\t%d\n\n", temp->lineNo);
+                printf("#######################\n\n");
                 temp = temp->next;
             }
         }
@@ -149,9 +55,9 @@ void printSymbolTable()
 }
 
 // Function to find an identifier
-int find(char *lexeme)
+int lookUp(char *lexeme)
 {
-    int index = hashf(lexeme);
+    int index = HASH(lexeme);
     struct Node *start = head[index];
 
     if (start == NULL)
@@ -162,6 +68,7 @@ int find(char *lexeme)
 
         if (strcmp(start->lexeme, lexeme) == 0)
         {
+            //found
             return 1;
         }
 
@@ -188,12 +95,12 @@ char *copyString(char *lexeme)
     return copy;
 }
 
-// Function to insert an identifier
-int insert(char *token_name, char *lexeme,
-           int lineno)
+// Function to insert a token
+void insert(char *token_name, char *lexeme,
+            int lineno)
 {
 
-    int index = hashf(lexeme);
+    int index = HASH(lexeme);
 
     struct Node *p = (struct Node *)malloc(sizeof(struct Node));
     p->token_name = token_name;
@@ -206,7 +113,6 @@ int insert(char *token_name, char *lexeme,
     if (head[index] == NULL)
     {
         head[index] = p;
-        return 1;
     }
 
     else
@@ -217,73 +123,65 @@ int insert(char *token_name, char *lexeme,
             start = start->next;
 
         start->next = p;
-
-        return 1;
-    }
-
-    return -1;
-}
-
-void init()
-{
-    for (int i = 0; i < MAX; i++)
-    {
-        head[i] = NULL;
     }
 }
 
 // Driver code
 int main()
 {
-    init();
 
-    int ntoken, vtoken;
+    int ntoken;
 
     ntoken = yylex();
 
     while (ntoken)
     {
-
         switch (ntoken)
         {
         case INTEGER_LITERAL:
         {
 
-            int x = insert("INTEGER", yytext, yylineno);
+            insert("INTEGER", yytext, yylineno);
             break;
         }
         case FLOAT_LITERAL:
         {
 
-            int x = insert("FLOATING POINT", yytext, yylineno);
+            insert("FLOATING POINT", yytext, yylineno);
             break;
         }
         case CHAR_LITERAL:
         {
 
-            int x = insert("CHARACTER", yytext, yylineno);
+            insert("CHARACTER", yytext, yylineno);
             break;
         }
         case STRING_LITERAL:
         {
 
-            int x = insert("STRING", yytext, yylineno);
+            insert("STRING", yytext, yylineno);
             break;
         }
         case BOOLEAN_LITERAL:
         {
 
-            int x = insert("BOOLEAN", yytext, yylineno);
+            insert("BOOLEAN", yytext, yylineno);
             break;
         }
         case IDENTIFIER:
         {
-            int x;
-            if (find(yytext) == -1)
+
+            // lookUp checks if yytext is already declared!
+            if (lookUp(yytext) == -1)
             {
-                x = insert("IDENTIFIER", yytext, yylineno);
+                insert("IDENTIFIER", yytext, yylineno);
             }
 
+            break;
+        }
+        case NULL_LITERAL:
+        {
+            insert("NULL", yytext, yylineno);
             break;
         }
 

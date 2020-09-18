@@ -3,8 +3,15 @@ public class test {
 
     public static void main(String[] args) {
 
-        /* This is a test program */
+        /*
+         * Does my lexer see multiline comments?
+         * 
+         * Let's See
+         */
 
+        /* this comment /* // /** ends here: */
+
+        int sameed$, osayd;
         int a = 0;
         int d = 0xAB123;
         int e = 0b011_01;

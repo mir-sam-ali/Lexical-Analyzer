@@ -4,3 +4,4 @@
 #define STRING_LITERAL 4
 #define BOOLEAN_LITERAL 5
 #define IDENTIFIER 6
+#define NULL_LITERAL 7
