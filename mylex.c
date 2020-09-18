@@ -4,19 +4,21 @@
 #include "mylex.h"
 
 extern int yylex();
+
 extern int yylineno;
 extern char *yytext;
-const int MAX = 100;
+extern FILE *yyin;
+const int MAX_SIZE = 1000;
 
 struct Node
 {
-    /* data */
+    /* TOKEN */
     char *token_name, *lexeme;
     int lineNo;
     struct Node *next;
 };
 
-struct Node *head[MAX];
+struct Node *symbol_table[MAX_SIZE];
 
 int HASH(char *lexeme)
 {
@@ -27,7 +29,6 @@ int HASH(char *lexeme)
     while (lexeme[i] != '\0')
     {
         sum = sum + lexeme[i];
-
         i++;
     }
 
@@ -37,11 +38,11 @@ int HASH(char *lexeme)
 void printSymbolTable()
 {
     printf("\n\n\t **** SYMBOL TABLE *****\n\n");
-    for (int i = 0; i < MAX; i++)
+    for (int i = 0; i < MAX_SIZE; i++)
     {
-        if (head[i] != NULL)
+        if (symbol_table[i] != NULL)
         {
-            struct Node *temp = head[i];
+            struct Node *temp = symbol_table[i];
             while (temp != NULL)
             {
                 printf("Token Name:\t%s\n", temp->token_name);
@@ -58,7 +59,7 @@ void printSymbolTable()
 int lookUp(char *lexeme)
 {
     int index = HASH(lexeme);
-    struct Node *start = head[index];
+    struct Node *start = symbol_table[index];
 
     if (start == NULL)
         return -1;
@@ -101,38 +102,43 @@ void insert(char *token_name, char *lexeme,
 {
 
     int index = HASH(lexeme);
-
     struct Node *p = (struct Node *)malloc(sizeof(struct Node));
     p->token_name = token_name;
 
+    //  copyString returns a new char pointer with the same string value
+    //  This was done to avoid assigning the pointer from lex directly
     p->lexeme = copyString(lexeme);
-
     p->lineNo = lineno;
     p->next = NULL;
 
-    if (head[index] == NULL)
+    if (symbol_table[index] == NULL)
     {
-        head[index] = p;
+        //  No Collision
+        symbol_table[index] = p;
     }
 
     else
     {
-
-        struct Node *start = head[index];
+        /*  
+            Collision occurs!
+            Using Separate Chaining
+        */
+        struct Node *start = symbol_table[index];
         while (start->next != NULL)
             start = start->next;
-
         start->next = p;
     }
 }
 
-// Driver code
-int main()
+int main(int argc, char *argv[])
 {
+    yyin = fopen(argv[1], "r");
 
     int ntoken;
 
     ntoken = yylex();
+
+    //ntoken contains the value returned by the lex
 
     while (ntoken)
     {

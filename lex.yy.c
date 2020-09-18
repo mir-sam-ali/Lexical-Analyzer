@@ -1101,219 +1101,219 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 63 "trial.l"
-{printf("\n Separator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: Separator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
 #line 64 "trial.l"
-{printf("\n Multiline Comment: %s",yytext);return -1;}
+{return -1;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 65 "trial.l"
-{printf("\n SingleLine Comment: %s",yytext); return -1;}
+{return -1;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 66 "trial.l"
-{printf("\n Keyword: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: Keyword\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 67 "trial.l"
-{printf("\n Keyword: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: Keyword\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 68 "trial.l"
-{printf("\n Keyword: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: Keyword\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 69 "trial.l"
-{printf("\n Keyword: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: Keyword\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 70 "trial.l"
-{printf("\n Keyword: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: Keyword\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 71 "trial.l"
-{printf("\n Keyword: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: Keyword\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 72 "trial.l"
-{printf("\n Keyword: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: Keyword\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 73 "trial.l"
-{printf("\n Keyword: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: Keyword\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 74 "trial.l"
-{printf("\n Keyword: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: Keyword\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 75 "trial.l"
-{printf("\n Keyword: %s",yytext); return -1;}   	         
+{printf("\n TOKEN_NAME: Keyword\t\t VALUE: %s",yytext); return -1;}   	         
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 76 "trial.l"
-{printf("\n Increment operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 77 "trial.l"
-{printf("\n Decrement operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 78 "trial.l"
-{printf("\n not operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 79 "trial.l"
-{printf("\n not operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 80 "trial.l"
-{printf("\n multiplication operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 81 "trial.l"
-{printf("\n Division operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
 #line 82 "trial.l"
-{printf("\n Modulus operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
 #line 83 "trial.l"
-{printf("\n addition operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
 #line 84 "trial.l"
-{printf("\n subtraction operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 85 "trial.l"
-{printf("\n relational operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
 #line 86 "trial.l"
-{printf("\n equality operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 87 "trial.l"
-{printf("\n shift operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
 #line 88 "trial.l"
-{printf("\n Bitwise AND operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 89 "trial.l"
-{printf("\n Bitwise exclusive OR operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
 #line 90 "trial.l"
-{printf("\n Bitwise inclusive OR operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
 #line 91 "trial.l"
-{printf("\n Logical AND operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
 #line 92 "trial.l"
-{printf("\n Logical OR operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
 #line 93 "trial.l"
-{printf("\n ternary operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
 #line 94 "trial.l"
-{printf("\n assignment operator: %s",yytext); return -1;}
+{printf("\n TOKEN_NAME: operator\t\t VALUE: %s",yytext); return -1;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
 #line 95 "trial.l"
-{printf("\n Data Type: String"); return -1;}
+{ return -1;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
 #line 96 "trial.l"
-{printf("\n Null: %s",yytext); return NULL_LITERAL;}
+{printf("\n TOKEN_NAME: NULL Literal\t VALUE: %s",yytext);return NULL_LITERAL;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
 #line 97 "trial.l"
-{printf("\n Integer Constant: %s",yytext); return INTEGER_LITERAL;}
+{printf("\n TOKEN_NAME: Integer Literal\t VALUE: %s",yytext); return INTEGER_LITERAL;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
 #line 98 "trial.l"
-{printf("\n Integer Constant: %s",yytext); return INTEGER_LITERAL;}
+{printf("\n TOKEN_NAME: Integer Literal\t VALUE: %s",yytext); return INTEGER_LITERAL;}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
 #line 99 "trial.l"
-{printf("\n Integer Constant: %s",yytext); return INTEGER_LITERAL;}
+{printf("\n TOKEN_NAME: Integer Literal\t VALUE: %s",yytext); return INTEGER_LITERAL;}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
 #line 100 "trial.l"
-{printf("\n Integer Constant: %s",yytext); return INTEGER_LITERAL;}
+{printf("\n TOKEN_NAME: Integer Literal\t VALUE: %s",yytext); return INTEGER_LITERAL;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
 #line 101 "trial.l"
-{printf("\n Floating-Point Literal: %s",yytext); return FLOAT_LITERAL;}
+{printf("\n TOKEN_NAME: Float Literal\t VALUE: %s",yytext); return FLOAT_LITERAL;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
 #line 102 "trial.l"
-{printf("\n Boolean Literal: %s",yytext); return BOOLEAN_LITERAL;}
+{printf("\n TOKEN_NAME: Boolean Literal\t VALUE: %s",yytext); return BOOLEAN_LITERAL;}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
 #line 103 "trial.l"
-{printf("\n Identifier: %s",yytext); return IDENTIFIER;}
+{printf("\n TOKEN_NAME: Identifier\t\t VALUE: %s",yytext); return IDENTIFIER;}
 	YY_BREAK
 case 42:
 /* rule 42 can match eol */
 YY_RULE_SETUP
 #line 104 "trial.l"
-{printf("\n String is %s",yytext); return STRING_LITERAL;}
+{printf("\n TOKEN_NAME: String Literal\t VALUE: %s",yytext); return STRING_LITERAL;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
 #line 105 "trial.l"
-{printf("\n Character Constant: %s",yytext); return CHAR_LITERAL;}
+{printf("\n TOKEN_NAME: Character Literal\t VALUE: %s",yytext); return CHAR_LITERAL;}
 	YY_BREAK
 case 44:
 /* rule 44 can match eol */
